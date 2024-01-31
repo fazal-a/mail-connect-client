@@ -77,7 +77,7 @@ const TimeReceived = styled.div`
   color: #888;
 `;
 
-const MainEmailSection = () => {
+const MainEmailSection = ({threads}) => {
     return (
         <MainEmailContainer>
             <TopSection>
@@ -106,6 +106,18 @@ const MainEmailSection = () => {
                     </EmailInfo>
                     <TimeReceived>2:30 PM</TimeReceived>
                 </EmailRow>
+                {threads.map ((thread: any) =>{
+                   return (<EmailRow key={thread?.id}>
+                        <EmailInfo>
+                            <SelectIcon>Select</SelectIcon>
+                            <StarIcon>Star</StarIcon>
+                            <SenderName>{thread?.id}</SenderName>
+                            <div>{thread?.messages[0]?.snippet}</div>
+                        </EmailInfo>
+                        <TimeReceived>2:30 PM</TimeReceived>
+                    </EmailRow>)
+                })}
+
 
                 {/* Add more email rows as needed */}
             </EmailListContainer>
